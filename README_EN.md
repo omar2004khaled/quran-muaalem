@@ -139,6 +139,14 @@ Or:
 uvx quran-muaalem[ui]  quran-muaalem-ui
 ```
 
+### Conservative noise reduction (experimental)
+
+The Gradio analysis page has an opt-in **Conservative noise reduction** checkbox. It uses a non-neural, minimum-statistics Wiener mask before Muaalem feature extraction. It is intentionally disabled by default; uncertain or non-stationary audio is passed through unchanged. The original waveform remains the fallback if processing fails.
+
+The same optional stage is available to Python callers with `Muaalem(...)(..., noise_reduction=True)`. For the LitServe engine, set `QURAN_MUAALEM_NOISE_REDUCTION=true` in the engine process environment. The default is `false`, preserving existing behavior. Set it to `false` or unset it to disable the engine/API preprocessing.
+
+The filter is limited to 16 kHz mono input, leaves duration and sample count unchanged, does not normalize or clip, and floors its spectral gain at 0.85 (at most about 1.4 dB of per-bin attenuation). Its noise detector is conservative and may leave traffic, competing speech, and lower-level noise untouched. Treat the option as experimental and compare it with the original recording; it is not a substitute for listening or expert recitation assessment.
+
 ### Via Python API
 
 

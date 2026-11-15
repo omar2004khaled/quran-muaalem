@@ -12,6 +12,7 @@ from .decode import (
     phonemes_level_greedy_decode,
 )
 from .muaalem_typing import Unit, SingleUnit, Sifa, MuaalemOutput
+from .noise_reduction import preprocess_waveform
 
 
 def format_sifat(
@@ -80,6 +81,7 @@ class Muaalem:
         waves: list[list[float] | torch.FloatTensor | NDArray],
         ref_quran_phonetic_script_list: list[QuranPhoneticScriptOutput],
         sampling_rate: int,
+        noise_reduction: bool | None = None,
     ) -> list[MuaalemOutput]:
         """Infrence Funcion for the Quran Muaalem Project
 
@@ -88,6 +90,8 @@ class Muaalem:
                     phonetized ouput of `quran_transcript.quran_phonetizer` with `remove_space=True`
 
                 sampleing_rate (int): has to be 16000
+                noise_reduction (bool | None): Apply the optional preprocessor.
+                    If omitted, `QURAN_MUAALEM_NOISE_REDUCTION` controls it.
 
         Returns:
             list[MuaalemOutput]:
@@ -126,6 +130,15 @@ class Muaalem:
 
         if sampling_rate != 16000:
             raise ValueError(f"`sampling_rate` has to be 16000 got: `{sampling_rate}`")
+
+        waves = [
+            preprocess_waveform(
+                wave,
+                enabled=noise_reduction,
+                sample_rate=sampling_rate,
+            )
+            for wave in waves
+        ]
 
         # TODO: check input waves
 

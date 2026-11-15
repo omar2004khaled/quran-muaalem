@@ -16,6 +16,7 @@ import gradio as gr
 
 from quran_muaalem.inference import Muaalem
 from quran_muaalem.muaalem_typing import MuaalemOutput
+from quran_muaalem.noise_reduction import noise_reduction_enabled_from_env
 from quran_muaalem.explain import explain_for_terminal
 from quran_muaalem.explain_gradio import explain_for_gradio
 
@@ -62,6 +63,7 @@ REQUIRED_MOSHAF_FIELDS = [
 model_id = "obadx/muaalem-model-v3_2"
 logging.basicConfig(level=logging.INFO)
 device = "cuda" if torch.cuda.is_available() else "cpu"
+noise_reduction_default = noise_reduction_enabled_from_env()
 muaalem = Muaalem(model_name_or_path=model_id, device=device)
 sampling_rate = 16000
 
@@ -114,9 +116,19 @@ def create_gradio_input_for_field(
     if help is None:
         help = field_info.description
 
-    # Handle Literal types
-    if get_origin(field_info.annotation) is Literal:
-        choices = list(get_args(field_info.annotation))
+    # Handle Literal types, including Optional[Literal[...]] settings.
+    literal_annotation = field_info.annotation
+    literal_args = get_args(literal_annotation)
+    is_optional_literal = (
+        len(literal_args) == 2 and type(None) in literal_args
+    )
+    if is_optional_literal:
+        literal_annotation = next(
+            arg for arg in literal_args if arg is not type(None)
+        )
+
+    if get_origin(literal_annotation) is Literal:
+        choices = list(get_args(literal_annotation))
         arabic_attributes = get_arabic_attributes(field_info)
 
         # Create choice list with Arabic labels if available
@@ -126,6 +138,9 @@ def create_gradio_input_for_field(
                 choice_list.append((arabic_attributes[choice], choice))
             else:
                 choice_list.append((str(choice), choice))
+
+        if is_optional_literal:
+            choice_list.insert(0, ("None", None))
 
         return gr.Dropdown(
             choices=choice_list,
@@ -174,7 +189,14 @@ def update_uthmani_ref(sura_idx, aya_idx, start_idx, num_words):
         return f"Error: {str(e)}"
 
 
-def process_audio(audio, sura_idx, aya_idx, start_idx, num_words):
+def process_audio(
+    audio,
+    sura_idx,
+    aya_idx,
+    start_idx,
+    num_words,
+    enable_noise_reduction=False,
+):
     global current_moshaf
 
     if audio is None:
@@ -197,6 +219,7 @@ def process_audio(audio, sura_idx, aya_idx, start_idx, num_words):
             [wave],
             [phonetizer_out],
             sampling_rate=sampling_rate,
+            noise_reduction=enable_noise_reduction,
         )
 
         # # Prepare output
@@ -329,6 +352,14 @@ with gr.Blocks(title="المعلم القرآني") as app:
                     type="filepath",
                     elem_id="audio_input",
                 )
+                noise_reduction_checkbox = gr.Checkbox(
+                    label="Conservative noise reduction (experimental)",
+                    value=noise_reduction_default,
+                    info=(
+                        "Optional; applies only when stationary background noise "
+                        "is detected confidently. Uncertain audio is left unchanged."
+                    ),
+                )
                 analyze_btn = gr.Button(
                     "افحص التلاوة", variant="primary", elem_id="analyze_btn"
                 )
@@ -364,7 +395,14 @@ with gr.Blocks(title="المعلم القرآني") as app:
         # Process audio when button is clicked
         analyze_btn.click(
             process_audio,
-            inputs=[audio_input, sura_dropdown, aya_dropdown, start_idx, num_words],
+            inputs=[
+                audio_input,
+                sura_dropdown,
+                aya_dropdown,
+                start_idx,
+                num_words,
+                noise_reduction_checkbox,
+            ],
             outputs=output_html,
         )
 

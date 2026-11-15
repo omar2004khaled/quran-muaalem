@@ -11,6 +11,7 @@ from fastapi import File, HTTPException, UploadFile
 
 from ..modeling.modeling_multi_level_ctc import Wav2Vec2BertForMultilevelCTC
 from ..modeling.multi_level_tokenizer import MultiLevelTokenizer
+from ..noise_reduction import noise_reduction_enabled_from_env, preprocess_waveform
 
 
 def simple_ctc_decode(
@@ -50,6 +51,7 @@ class QuranMuaalemAPI(ls.LitAPI):
         self.dtype = dtype
         self.max_audio_seconds = max_audio_seconds
         self.sampling_rate = 16000
+        self.noise_reduction_enabled = noise_reduction_enabled_from_env()
         self.max_features = int(
             np.ceil((self.sampling_rate * self.max_audio_seconds - 400) / (160 * 2))
         )
@@ -87,6 +89,12 @@ class QuranMuaalemAPI(ls.LitAPI):
                     " audio and send the parts separately."
                 ),
             )
+
+        audio_array = preprocess_waveform(
+            audio_array,
+            enabled=self.noise_reduction_enabled,
+            sample_rate=sr,
+        )
 
         features = self.processor(
             audio_array,
