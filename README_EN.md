@@ -139,6 +139,33 @@ Or:
 uvx quran-muaalem[ui]  quran-muaalem-ui
 ```
 
+### Running from a local checkout on Windows
+
+To avoid changing the Python environment already selected by VS Code, create a separate environment for this project. Install [uv](https://docs.astral.sh/uv/) if needed, then run these commands from the repository directory:
+
+```powershell
+uv venv .venv-quran
+uv pip install --python .venv-quran\Scripts\python.exe -e ".[ui]"
+.\.venv-quran\Scripts\python.exe gradio_app.py
+```
+
+The first launch downloads the model from Hugging Face. Install FFmpeg and make sure `ffmpeg` is available on `PATH` for audio processing. Alternatively, if the dependencies are already installed in the repository's `.venv`, run `.\.venv\Scripts\python.exe gradio_app.py` or use `run_ui.bat`. The batch launchers prefer `.venv-quran` and fall back to `.venv`; they do not synchronize or replace packages.
+
+The Main Analysis tab also has an optional FRCRN enhancement comparison. It runs edge-padded FRCRN in a separate Python environment, then lets Muaalem score the raw result and conservative mixes with the original. The app selects the candidate with the fewest phoneme edits against the generated Quran reference and can fall back to the original audio. This model-based guard is a heuristic, not a correctness guarantee, so listen to the raw and selected audio. FRCRN dependencies are not installed into the Muaalem environment. By default, it expects the isolated environment and checkpoint under `D:\venvs\quran-muaalem-frcrn`. To use another location, set these variables before starting the UI:
+
+```powershell
+$env:QURAN_MUAALEM_FRCRN_ROOT = "D:\venvs\quran-muaalem-frcrn"
+$env:QURAN_MUAALEM_FRCRN_PYTHON = "D:\venvs\quran-muaalem-frcrn\Scripts\python.exe"
+```
+
+The pinned FRCRN checkpoint must be present at `checkpoints\FRCRN_SE_16K` under that environment root.
+
+Run the local tests with:
+
+```powershell
+.\.venv\Scripts\python.exe -m pytest -q -m "not slow"
+```
+
 ### Via Python API
 
 
@@ -384,10 +411,11 @@ uv add quran-muaalem[engine]
 
 ```bash
 # First terminal: Run the engine (port 8000)
-uv run quran-muaalem-engine
+uv pip install --python .venv-quran\Scripts\python.exe -e ".[engine]"
+.\.venv-quran\Scripts\python.exe -m quran_muaalem.engine.main
 
 # Second terminal: Run the app (port 8001)
-uv run quran-muaalem-app
+.\.venv-quran\Scripts\python.exe -m quran_muaalem.app.main
 ```
 
 ---
