@@ -1,0 +1,16 @@
+# Install this file with --no-deps, then install the editable project and the
+# remaining direct audio/UI packages. DeepFilterNet 0.5.6 metadata requires
+# numpy<2, while quran-muaalem requires numpy>=2.2.6; the tested runtime works
+# with NumPy 2, but pip cannot resolve both metadata constraints together.
+deepfilternet==0.5.6
+# DeepFilterNet 0.5.6 uses torchaudio.backend.common, removed in torchaudio 2.11.
+torch==2.8.0
+torchaudio==2.8.0
+librosa
+numpy
+gradio
+soundfile
+pytest
+loguru
+appdirs
+packaging==23.2

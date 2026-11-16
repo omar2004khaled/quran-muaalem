@@ -1,0 +1,216 @@
+W1116 09:43:19.925000 31360 Lib\site-packages\torch\distributed\elastic\multiprocessing\redirects.py:29] NOTE: Redirects are currently not supported in Windows or MacOs.
+INFO:httpx2:HTTP Request: GET https://huggingface.co/api/models/obadx/muaalem-model-v3_2/revision/main "HTTP/1.1 200 OK"
+Loading weights:   0%|          | 0/816 [00:00<?, ?it/s]Loading weights:   0%|          | 3/816 [00:00<00:30, 26.98it/s]Loading weights:   1%|          | 6/816 [00:00<00:51, 15.65it/s]Loading weights:  12%|#2        | 98/816 [00:00<00:02, 274.26it/s]Loading weights:  16%|#6        | 134/816 [00:00<00:02, 266.84it/s]Loading weights:  22%|##2       | 183/816 [00:00<00:02, 301.53it/s]Loading weights:  28%|##8       | 230/816 [00:00<00:01, 325.92it/s]Loading weights:  33%|###2      | 266/816 [00:01<00:02, 198.34it/s]Loading weights:  45%|####5     | 369/816 [00:01<00:01, 321.45it/s]Loading weights:  50%|#####     | 410/816 [00:01<00:01, 288.06it/s]Loading weights:  55%|#####4    | 445/816 [00:01<00:01, 242.62it/s]Loading weights:  58%|#####8    | 474/816 [00:01<00:01, 215.88it/s]Loading weights:  66%|######5   | 536/816 [00:02<00:00, 284.76it/s]Loading weights:  74%|#######4  | 607/816 [00:02<00:00, 363.32it/s]Loading weights:  80%|#######9  | 651/816 [00:02<00:00, 366.16it/s]Loading weights: 100%|##########| 816/816 [00:02<00:00, 336.96it/s]
+INFO:httpx2:HTTP Request: GET https://huggingface.co/api/models/obadx/muaalem-model-v3_2/revision/main "HTTP/1.1 200 OK"
+INFO:httpx2:HTTP Request: GET https://huggingface.co/api/models/obadx/muaalem-model-v3_2/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+INFO:httpx2:HTTP Request: GET https://huggingface.co/api/models/obadx/muaalem-model-v3_2/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+INFO:httpx2:HTTP Request: GET https://huggingface.co/api/models/obadx/muaalem-model-v3_2/revision/main "HTTP/1.1 200 OK"
+INFO:httpx2:HTTP Request: GET https://huggingface.co/api/models/obadx/muaalem-model-v3_2/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+INFO:httpx2:HTTP Request: GET https://huggingface.co/api/models/obadx/muaalem-model-v3_2/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+INFO:httpx2:HTTP Request: GET https://huggingface.co/api/models/obadx/muaalem-model-v3_2/revision/main "HTTP/1.1 200 OK"
+INFO:httpx2:HTTP Request: GET https://huggingface.co/api/models/obadx/muaalem-model-v3_2/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+INFO:httpx2:HTTP Request: GET https://huggingface.co/api/models/obadx/muaalem-model-v3_2/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+INFO:httpx2:HTTP Request: GET https://huggingface.co/api/models/obadx/muaalem-model-v3_2/revision/main "HTTP/1.1 200 OK"
+INFO:httpx2:HTTP Request: GET https://huggingface.co/api/models/obadx/muaalem-model-v3_2/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+INFO:httpx2:HTTP Request: GET https://huggingface.co/api/models/obadx/muaalem-model-v3_2/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+INFO:httpx2:HTTP Request: GET https://huggingface.co/api/models/obadx/muaalem-model-v3_2/revision/main "HTTP/1.1 200 OK"
+INFO:httpx2:HTTP Request: GET https://huggingface.co/api/models/obadx/muaalem-model-v3_2/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+INFO:httpx2:HTTP Request: GET https://huggingface.co/api/models/obadx/muaalem-model-v3_2/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+INFO:httpx2:HTTP Request: GET https://huggingface.co/api/models/obadx/muaalem-model-v3_2/revision/main "HTTP/1.1 200 OK"
+INFO:httpx2:HTTP Request: GET https://huggingface.co/api/models/obadx/muaalem-model-v3_2/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+INFO:httpx2:HTTP Request: GET https://huggingface.co/api/models/obadx/muaalem-model-v3_2/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+INFO:httpx2:HTTP Request: GET https://huggingface.co/api/models/obadx/muaalem-model-v3_2/revision/main "HTTP/1.1 200 OK"
+INFO:httpx2:HTTP Request: GET https://huggingface.co/api/models/obadx/muaalem-model-v3_2/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+INFO:httpx2:HTTP Request: GET https://huggingface.co/api/models/obadx/muaalem-model-v3_2/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+INFO:httpx2:HTTP Request: GET https://huggingface.co/api/models/obadx/muaalem-model-v3_2/revision/main "HTTP/1.1 200 OK"
+INFO:httpx2:HTTP Request: GET https://huggingface.co/api/models/obadx/muaalem-model-v3_2/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+INFO:httpx2:HTTP Request: GET https://huggingface.co/api/models/obadx/muaalem-model-v3_2/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+INFO:httpx2:HTTP Request: GET https://huggingface.co/api/models/obadx/muaalem-model-v3_2/revision/main "HTTP/1.1 200 OK"
+INFO:httpx2:HTTP Request: GET https://huggingface.co/api/models/obadx/muaalem-model-v3_2/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+INFO:httpx2:HTTP Request: GET https://huggingface.co/api/models/obadx/muaalem-model-v3_2/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+INFO:httpx2:HTTP Request: GET https://huggingface.co/api/models/obadx/muaalem-model-v3_2/revision/main "HTTP/1.1 200 OK"
+INFO:httpx2:HTTP Request: GET https://huggingface.co/api/models/obadx/muaalem-model-v3_2/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+INFO:httpx2:HTTP Request: GET https://huggingface.co/api/models/obadx/muaalem-model-v3_2/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+INFO:httpx2:HTTP Request: GET https://huggingface.co/api/models/obadx/muaalem-model-v3_2/revision/main "HTTP/1.1 200 OK"
+INFO:httpx2:HTTP Request: GET https://huggingface.co/api/models/obadx/muaalem-model-v3_2/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+INFO:httpx2:HTTP Request: GET https://huggingface.co/api/models/obadx/muaalem-model-v3_2/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+INFO:httpx2:HTTP Request: GET https://huggingface.co/api/models/obadx/muaalem-model-v3_2 "HTTP/1.1 200 OK"
+INFO:httpx2:HTTP Request: HEAD https://huggingface.co/api/telemetry/https%3A/api.gradio.app/gradio-initiated-analytics "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:7860/gradio_api/startup-events "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: HEAD http://127.0.0.1:7860/ "HTTP/1.1 200 OK"
+INFO:httpx2:HTTP Request: HEAD https://huggingface.co/api/telemetry/https%3A/api.gradio.app/gradio-launched-telemetry "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET https://api.gradio.app/pkg-version "HTTP/1.1 200 OK"
+D:\quran-muaalem\.venv-noise\Lib\site-packages\df\io.py:9: UserWarning: `torchaudio.backend.common.AudioMetaData` has been moved to `torchaudio.AudioMetaData`. Please update the import path.
+  from torchaudio.backend.common import AudioMetaData
+INFO:noise_frontend.enhancer:DeepFilterNet init_df returned model/state/suffix=DeepFilterNet3; sample rate=48000
+INFO:noise_frontend.frontend:Noise frontend mode=moderate snr=22.0 dB too_noisy=False
+INFO:root:Sequence: `0` has mismatch Level: tafkheem_or_taqeeq
+INFO:root:Sequence: `0` has short Level: tikraar we will place it with `None`
+INFO:root:Sequence: `0` has short Level: ghonna we will place it with `None`
+INFO:root:Sequence: `0` has short Level: hams_or_jahr we will place it with `None`
+INFO:root:Sequence: `0` has short Level: istitala we will place it with `None`
+INFO:root:Sequence: `0` has short Level: itbaq we will place it with `None`
+INFO:root:Sequence: `0` has short Level: qalqla we will place it with `None`
+INFO:root:Sequence: `0` has short Level: safeer we will place it with `None`
+INFO:root:Sequence: `0` has short Level: shidda_or_rakhawa we will place it with `None`
+INFO:root:Sequence: `0` has short Level: tafashie we will place it with `None`
+INFO:root:Sequence: `0` has short Level: tafkheem_or_taqeeq we will place it with `None`
+INFO:root:Sequence: `0` has short Level: tikraar we will place it with `None`
+INFO:noise_frontend.frontend:Noise frontend mode=bypass snr=58.3 dB too_noisy=False
+INFO:root:Sequence: `0` has short Level: tikraar we will place it with `None`
+INFO:root:Sequence: `0` has short Level: ghonna we will place it with `None`
+INFO:root:Sequence: `0` has short Level: hams_or_jahr we will place it with `None`
+INFO:root:Sequence: `0` has short Level: istitala we will place it with `None`
+INFO:root:Sequence: `0` has short Level: itbaq we will place it with `None`
+INFO:root:Sequence: `0` has short Level: qalqla we will place it with `None`
+INFO:root:Sequence: `0` has short Level: safeer we will place it with `None`
+INFO:root:Sequence: `0` has short Level: shidda_or_rakhawa we will place it with `None`
+INFO:root:Sequence: `0` has short Level: tafashie we will place it with `None`
+INFO:root:Sequence: `0` has short Level: tafkheem_or_taqeeq we will place it with `None`
+INFO:root:Sequence: `0` has short Level: tikraar we will place it with `None`
+INFO:noise_frontend.frontend:Noise frontend mode=moderate snr=22.0 dB too_noisy=False
+INFO:root:Sequence: `0` has mismatch Level: tafkheem_or_taqeeq
+INFO:noise_frontend.frontend:Noise frontend mode=moderate snr=22.0 dB too_noisy=False
+INFO:root:Sequence: `0` has mismatch Level: tafkheem_or_taqeeq
+INFO:root:Sequence: `0` has mismatch Level: tafashie
+INFO:root:Sequence: `0` has mismatch Level: tikraar
+INFO:noise_frontend.frontend:Noise frontend mode=bypass snr=100.0 dB too_noisy=False
+INFO:root:Sequence: `0` has mismatch Level: tafashie
+INFO:root:Sequence: `0` has mismatch Level: tikraar
+INFO:root:Sequence: `0` has mismatch Level: ghonna
+INFO:root:Sequence: `0` has mismatch Level: hams_or_jahr
+INFO:root:Sequence: `0` has mismatch Level: istitala
+INFO:root:Sequence: `0` has mismatch Level: itbaq
+INFO:root:Sequence: `0` has mismatch Level: qalqla
+INFO:root:Sequence: `0` has mismatch Level: safeer
+INFO:root:Sequence: `0` has mismatch Level: shidda_or_rakhawa
+INFO:root:Sequence: `0` has mismatch Level: tafkheem_or_taqeeq
+INFO:noise_frontend.frontend:Noise frontend mode=heavy snr=1.8 dB too_noisy=False
+INFO:root:Sequence: `0` has mismatch Level: ghonna
+INFO:root:Sequence: `0` has mismatch Level: hams_or_jahr
+INFO:root:Sequence: `0` has mismatch Level: istitala
+INFO:root:Sequence: `0` has mismatch Level: itbaq
+INFO:root:Sequence: `0` has mismatch Level: qalqla
+INFO:root:Sequence: `0` has mismatch Level: safeer
+INFO:root:Sequence: `0` has mismatch Level: shidda_or_rakhawa
+INFO:root:Sequence: `0` has mismatch Level: tafashie
+INFO:root:Sequence: `0` has mismatch Level: tafkheem_or_taqeeq
+INFO:root:Sequence: `0` has mismatch Level: tikraar
+INFO:root:Sequence: `0` has short Level: ghonna we will place it with `None`
+INFO:root:Sequence: `0` has short Level: hams_or_jahr we will place it with `None`
+INFO:root:Sequence: `0` has short Level: istitala we will place it with `None`
+INFO:root:Sequence: `0` has short Level: itbaq we will place it with `None`
+INFO:root:Sequence: `0` has short Level: qalqla we will place it with `None`
+INFO:root:Sequence: `0` has short Level: safeer we will place it with `None`
+INFO:root:Sequence: `0` has short Level: shidda_or_rakhawa we will place it with `None`
+INFO:root:Sequence: `0` has short Level: tafashie we will place it with `None`
+INFO:root:Sequence: `0` has short Level: tafkheem_or_taqeeq we will place it with `None`
+INFO:root:Sequence: `0` has short Level: tikraar we will place it with `None`
+INFO:noise_frontend.frontend:Noise frontend mode=bypass snr=100.0 dB too_noisy=False
+INFO:root:Sequence: `0` has mismatch Level: ghonna
+INFO:root:Sequence: `0` has mismatch Level: hams_or_jahr
+INFO:root:Sequence: `0` has mismatch Level: istitala
+INFO:root:Sequence: `0` has mismatch Level: itbaq
+INFO:root:Sequence: `0` has mismatch Level: qalqla
+INFO:root:Sequence: `0` has mismatch Level: safeer
+INFO:root:Sequence: `0` has mismatch Level: shidda_or_rakhawa
+INFO:root:Sequence: `0` has mismatch Level: tafashie
+INFO:root:Sequence: `0` has mismatch Level: tafkheem_or_taqeeq
+INFO:root:Sequence: `0` has mismatch Level: tikraar
+INFO:root:Sequence: `0` has short Level: ghonna we will place it with `None`
+INFO:root:Sequence: `0` has short Level: hams_or_jahr we will place it with `None`
+INFO:root:Sequence: `0` has short Level: istitala we will place it with `None`
+INFO:root:Sequence: `0` has short Level: itbaq we will place it with `None`
+INFO:root:Sequence: `0` has short Level: qalqla we will place it with `None`
+INFO:root:Sequence: `0` has short Level: safeer we will place it with `None`
+INFO:root:Sequence: `0` has short Level: shidda_or_rakhawa we will place it with `None`
+INFO:root:Sequence: `0` has short Level: tafashie we will place it with `None`
+INFO:root:Sequence: `0` has short Level: tafkheem_or_taqeeq we will place it with `None`
+INFO:root:Sequence: `0` has short Level: tikraar we will place it with `None`
+INFO:noise_frontend.frontend:Noise frontend mode=bypass snr=29.2 dB too_noisy=False
+INFO:root:Sequence: `0` has short Level: ghonna we will place it with `None`
+INFO:root:Sequence: `0` has short Level: qalqla we will place it with `None`
+INFO:root:Sequence: `0` has short Level: shidda_or_rakhawa we will place it with `None`
+INFO:root:Sequence: `0` has short Level: ghonna we will place it with `None`
+INFO:root:Sequence: `0` has short Level: hams_or_jahr we will place it with `None`
+INFO:root:Sequence: `0` has short Level: itbaq we will place it with `None`
+INFO:root:Sequence: `0` has short Level: qalqla we will place it with `None`
+INFO:root:Sequence: `0` has short Level: safeer we will place it with `None`
+INFO:root:Sequence: `0` has short Level: shidda_or_rakhawa we will place it with `None`
+INFO:noise_frontend.frontend:Noise frontend mode=heavy snr=6.6 dB too_noisy=False
+INFO:root:Sequence: `0` has short Level: qalqla we will place it with `None`
+INFO:root:Sequence: `0` has short Level: tafashie we will place it with `None`
+INFO:root:Sequence: `0` has short Level: ghonna we will place it with `None`
+INFO:root:Sequence: `0` has short Level: hams_or_jahr we will place it with `None`
+INFO:root:Sequence: `0` has short Level: istitala we will place it with `None`
+INFO:root:Sequence: `0` has short Level: itbaq we will place it with `None`
+INFO:root:Sequence: `0` has short Level: qalqla we will place it with `None`
+INFO:root:Sequence: `0` has short Level: safeer we will place it with `None`
+INFO:root:Sequence: `0` has short Level: shidda_or_rakhawa we will place it with `None`
+INFO:root:Sequence: `0` has short Level: tafashie we will place it with `None`
+INFO:root:Sequence: `0` has short Level: tikraar we will place it with `None`
+INFO:noise_frontend.frontend:Noise frontend mode=moderate snr=22.0 dB too_noisy=False
+INFO:root:Sequence: `0` has mismatch Level: tafkheem_or_taqeeq
+INFO:root:Sequence: `0` has mismatch Level: ghonna
+INFO:root:Sequence: `0` has mismatch Level: hams_or_jahr
+INFO:root:Sequence: `0` has mismatch Level: istitala
+INFO:root:Sequence: `0` has mismatch Level: itbaq
+INFO:root:Sequence: `0` has mismatch Level: safeer
+INFO:root:Sequence: `0` has mismatch Level: shidda_or_rakhawa
+INFO:root:Sequence: `0` has mismatch Level: tafashie
+INFO:root:Sequence: `0` has mismatch Level: tafkheem_or_taqeeq
+INFO:root:Sequence: `0` has mismatch Level: tikraar
+INFO:noise_frontend.frontend:Noise frontend mode=bypass snr=68.1 dB too_noisy=False
+INFO:root:Sequence: `0` has mismatch Level: ghonna
+INFO:root:Sequence: `0` has mismatch Level: hams_or_jahr
+INFO:root:Sequence: `0` has mismatch Level: istitala
+INFO:root:Sequence: `0` has mismatch Level: itbaq
+INFO:root:Sequence: `0` has mismatch Level: safeer
+INFO:root:Sequence: `0` has mismatch Level: shidda_or_rakhawa
+INFO:root:Sequence: `0` has mismatch Level: tafashie
+INFO:root:Sequence: `0` has mismatch Level: tafkheem_or_taqeeq
+INFO:root:Sequence: `0` has mismatch Level: tikraar
+INFO:root:Sequence: `0` has short Level: ghonna we will place it with `None`
+INFO:root:Sequence: `0` has short Level: istitala we will place it with `None`
+INFO:root:Sequence: `0` has short Level: itbaq we will place it with `None`
+INFO:root:Sequence: `0` has short Level: qalqla we will place it with `None`
+INFO:root:Sequence: `0` has short Level: safeer we will place it with `None`
+INFO:root:Sequence: `0` has short Level: shidda_or_rakhawa we will place it with `None`
+INFO:root:Sequence: `0` has short Level: tafashie we will place it with `None`
+INFO:root:Sequence: `0` has short Level: tafkheem_or_taqeeq we will place it with `None`
+INFO:noise_frontend.frontend:Noise frontend mode=bypass snr=100.0 dB too_noisy=False
+INFO:root:Sequence: `0` has short Level: ghonna we will place it with `None`
+INFO:root:Sequence: `0` has short Level: istitala we will place it with `None`
+INFO:root:Sequence: `0` has short Level: itbaq we will place it with `None`
+INFO:root:Sequence: `0` has short Level: qalqla we will place it with `None`
+INFO:root:Sequence: `0` has short Level: safeer we will place it with `None`
+INFO:root:Sequence: `0` has short Level: shidda_or_rakhawa we will place it with `None`
+INFO:root:Sequence: `0` has short Level: tafashie we will place it with `None`
+INFO:root:Sequence: `0` has short Level: tafkheem_or_taqeeq we will place it with `None`
+INFO:root:Sequence: `0` has mismatch Level: tafashie
+INFO:root:Sequence: `0` has mismatch Level: tafkheem_or_taqeeq
+INFO:root:Sequence: `0` has mismatch Level: tikraar
+INFO:noise_frontend.frontend:Noise frontend mode=bypass snr=101.2 dB too_noisy=False
+INFO:root:Sequence: `0` has mismatch Level: tafashie
+INFO:root:Sequence: `0` has mismatch Level: tafkheem_or_taqeeq
+INFO:root:Sequence: `0` has mismatch Level: tikraar
+INFO:root:Sequence: `0` has short Level: ghonna we will place it with `None`
+INFO:root:Sequence: `0` has short Level: hams_or_jahr we will place it with `None`
+INFO:root:Sequence: `0` has short Level: istitala we will place it with `None`
+INFO:root:Sequence: `0` has short Level: itbaq we will place it with `None`
+INFO:root:Sequence: `0` has short Level: qalqla we will place it with `None`
+INFO:root:Sequence: `0` has short Level: safeer we will place it with `None`
+INFO:root:Sequence: `0` has short Level: shidda_or_rakhawa we will place it with `None`
+INFO:root:Sequence: `0` has short Level: tafashie we will place it with `None`
+INFO:root:Sequence: `0` has short Level: tikraar we will place it with `None`
+INFO:noise_frontend.frontend:Noise frontend mode=bypass snr=100.0 dB too_noisy=False
+INFO:root:Sequence: `0` has short Level: ghonna we will place it with `None`
+INFO:root:Sequence: `0` has short Level: hams_or_jahr we will place it with `None`
+INFO:root:Sequence: `0` has short Level: istitala we will place it with `None`
+INFO:root:Sequence: `0` has short Level: itbaq we will place it with `None`
+INFO:root:Sequence: `0` has short Level: qalqla we will place it with `None`
+INFO:root:Sequence: `0` has short Level: safeer we will place it with `None`
+INFO:root:Sequence: `0` has short Level: shidda_or_rakhawa we will place it with `None`
+INFO:root:Sequence: `0` has short Level: tafashie we will place it with `None`
+INFO:root:Sequence: `0` has short Level: tikraar we will place it with `None`
+INFO:noise_frontend.frontend:Noise frontend mode=bypass snr=100.0 dB too_noisy=False
