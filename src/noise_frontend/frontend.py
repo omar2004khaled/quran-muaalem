@@ -8,6 +8,9 @@ import numpy as np
 from .snr import estimate_snr_db
 
 logger = logging.getLogger(__name__)
+_ENHANCE_TARGET_RMS = 0.08
+_ENHANCE_PEAK_LIMIT = 0.95
+_ENHANCE_MAX_GAIN = 24.0
 
 
 @dataclass
@@ -56,7 +59,18 @@ class NoiseFrontend:
                 enhance_fn = enhance_wave
             else:
                 enhance_fn = self._enhancer
-            output = np.asarray(enhance_fn(source.astype(np.float32, copy=True), sr,
+            enhance_input = source.astype(np.float32, copy=True)
+            input_rms = float(np.sqrt(np.mean(enhance_input.astype(np.float64) ** 2)))
+            input_peak = float(np.max(np.abs(enhance_input), initial=0.0))
+            gain = 1.0
+            if input_rms > 1e-8 and input_peak > 0:
+                gain = min(_ENHANCE_MAX_GAIN,
+                           _ENHANCE_TARGET_RMS / input_rms,
+                           _ENHANCE_PEAK_LIMIT / input_peak)
+                enhance_input *= np.float32(gain)
+            logger.info("Enhancement input level gain=%.2fx (RMS %.5f -> %.5f)",
+                        gain, input_rms, input_rms * gain)
+            output = np.asarray(enhance_fn(enhance_input, sr,
                                            attenuation, self.config.device), dtype=np.float32).reshape(-1)
             if output.size != source.size:
                 output = output[:source.size]

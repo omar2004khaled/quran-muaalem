@@ -23,6 +23,23 @@ def test_shape_dtype_and_input_immutable():
     np.testing.assert_array_equal(wave, before)
 
 
+def test_quiet_audio_is_level_normalized_before_enhancement():
+    wave = np.full(256, 0.004, dtype=np.float32)
+    seen = {}
+
+    def mock_enhancer(x, *_):
+        seen["rms"] = float(np.sqrt(np.mean(x.astype(np.float64) ** 2)))
+        seen["peak"] = float(np.max(np.abs(x)))
+        return x
+
+    result = NoiseFrontend(snr_estimator=lambda *_: 5,
+                           enhancer=mock_enhancer).process(wave, 16000)
+    assert 0.07 <= seen["rms"] <= 0.081
+    assert seen["peak"] <= 0.95
+    assert result.wave.shape == wave.shape
+    np.testing.assert_array_equal(wave, np.full(256, 0.004, dtype=np.float32))
+
+
 def test_threshold_modes_and_too_noisy():
     for snr, mode, noisy in [(20, "bypass", False), (10, "moderate", False),
                              (9, "heavy", False), (-1, "heavy", True)]:

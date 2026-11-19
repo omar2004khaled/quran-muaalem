@@ -44,6 +44,21 @@ def _reference(sura, aya, start, count):
     return Aya(int(sura), int(aya)).get_by_imlaey_words(int(start), int(count)).uthmani
 
 
+def _edit_distance(left, right):
+    """Return character-level Levenshtein distance for two phoneme strings."""
+    previous = list(range(len(right) + 1))
+    for row, left_char in enumerate(left, start=1):
+        current = [row]
+        for column, right_char in enumerate(right, start=1):
+            current.append(min(
+                current[-1] + 1,
+                previous[column] + 1,
+                previous[column - 1] + (left_char != right_char),
+            ))
+        previous = current
+    return previous[-1]
+
+
 def _sifa_html(out_a, out_b):
     fields = ("qalqla", "ghonna", "hams_or_jahr", "shidda_or_rakhawa",
               "tafkheem_or_taqeeq", "itbaq", "safeer", "tikraar", "tafashie", "istitala")
@@ -83,6 +98,12 @@ def process(audio_path, sura, aya, start, count, add_noise, snr_db,
     out_b = ROBUST_MODEL([raw.copy()], [phonetic], sampling_rate=SR)[0]
     status = ROBUST_MODEL.frontend_results[0]
     processed = status.wave
+    raw_errors = _edit_distance(out_a.phonemes.text, phonetic.phonemes)
+    processed_errors = _edit_distance(out_b.phonemes.text, phonetic.phonemes)
+    # Keep raw on ties so preprocessing cannot change an equally good result.
+    use_frontend = processed_errors < raw_errors
+    selected_path = "Frontend B" if use_frontend else "Raw A"
+    selected_wave = processed if use_frontend else raw
     if processed.size != raw.size or processed.dtype != np.float32:
         raise gr.Error("Frontend output shape or dtype is invalid")
     joint_peak = max(float(np.max(np.abs(raw), initial=0.0)),
@@ -95,8 +116,10 @@ def process(audio_path, sura, aya, start, count, add_noise, snr_db,
     output_dir.mkdir(parents=True, exist_ok=True)
     raw_path = output_dir / "raw.wav"
     processed_path = output_dir / "processed.wav"
+    selected_pathname = output_dir / "recommended.wav"
     sf.write(raw_path, raw, SR, subtype="FLOAT")
     sf.write(processed_path, processed, SR, subtype="FLOAT")
+    sf.write(selected_pathname, selected_wave, SR, subtype="FLOAT")
     phonemes = (
         "<p>Phoneme colors: white = matches reference, red = reference sound missing, "
         "green = extra predicted sound. Sifa tables compare predictions with the "
@@ -109,7 +132,14 @@ def process(audio_path, sura, aya, start, count, add_noise, snr_db,
                              out_b.sifat, phonetic.sifat, lang="arabic")
     )
     info = f"Estimated SNR: {status.snr_db:.1f} dB · mode: {status.mode} · too_noisy: {status.too_noisy}"
-    return info, str(raw_path), str(processed_path), phonemes, _sifa_html(out_a, out_b)
+    recommendation = (
+        f"**Reference-guided recommendation: {selected_path}.** "
+        f"Phoneme edit errors: Raw A = {raw_errors}, Frontend B = {processed_errors}. "
+        "This uses the selected reference to choose between the two predictions; "
+        "it does not independently verify the recitation."
+    )
+    return (info, recommendation, str(selected_pathname), str(raw_path),
+            str(processed_path), phonemes, _sifa_html(out_a, out_b))
 
 
 with gr.Blocks(title="Noise Frontend Local Demo") as app:
@@ -131,20 +161,23 @@ with gr.Blocks(title="Noise Frontend Local Demo") as app:
     snr = gr.Slider(0, 30, value=10, step=1, label="Synthetic noise SNR (dB)")
     with gr.Row():
         clean_threshold = gr.Slider(
-            0, 40, value=25, step=1, label="clean_snr_db",
-            info="Estimated SNR at or above this value bypasses enhancement. This demo default triggers enhancement for your test recording.",
+            0, 120, value=25, step=1, label="clean_snr_db",
+            info="Estimated SNR at or above this value bypasses enhancement. To force a trial, set this above the displayed SNR.",
         )
         moderate = gr.Slider(0, 30, value=10, step=1, label="moderate_atten_db")
         heavy = gr.Slider(0, 30, value=20, step=1, label="heavy_atten_db")
     run = gr.Button("Compare raw and frontend", variant="primary")
     status_out = gr.Markdown()
+    recommendation_out = gr.Markdown()
+    recommended_audio = gr.Audio(label="Recommended for selected reference")
     with gr.Row():
         raw_audio = gr.Audio(label="A · Raw")
         frontend_audio = gr.Audio(label="B · Frontend")
     phoneme_out = gr.HTML(label="Each path compared with the selected reference")
     sifa_out = gr.HTML()
     run.click(process, [audio, sura, aya, start, count, add_noise, snr, clean_threshold, moderate, heavy],
-              [status_out, raw_audio, frontend_audio, phoneme_out, sifa_out])
+              [status_out, recommendation_out, recommended_audio, raw_audio,
+               frontend_audio, phoneme_out, sifa_out])
 
 
 if __name__ == "__main__":
