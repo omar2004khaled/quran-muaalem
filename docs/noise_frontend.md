@@ -1,5 +1,20 @@
 # Noise frontend
 
+## Run the raw-versus-frontend comparison demo
+
+From the repository root, run:
+
+```powershell
+.\run_noise_demo.bat
+```
+
+This uses the isolated `.venv-noise` environment and opens the Gradio demo at
+`http://127.0.0.1:7860`. The page compares raw audio and frontend-processed
+audio against the selected Quran reference, then recommends the path with fewer
+phoneme edit errors. The comparison takes longer than a single analysis because
+it runs the noise enhancer and performs Muaalem inference on both audio paths.
+The first run in a new process can also take longer while models load.
+
 DeepFilterNet 0.5.6 metadata currently conflicts with the repository's NumPy
 requirement (`deepfilternet` requires NumPy below 2; Muaalem requires NumPy 2.2
 or newer). Install the noise requirements without transitive dependencies,
